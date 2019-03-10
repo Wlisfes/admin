@@ -1,0 +1,31 @@
+
+
+/**修改菜单**/
+#root .ivu-menu .ivu-menu-submenu .ivu-menu-submenu-title {
+    background-color: #001529;
+    overflow: hidden;
+}
+
+#root .ivu-menu .ivu-menu-submenu .ivu-menu-submenu-title:hover {
+    background-color: #001529;
+}
+
+#root .ivu-menu .ivu-menu-submenu .ivu-menu {
+    background-color: #000C17;
+}
+
+#root .x-Sider>.ivu-layout-sider-children>.ivu-menu>.ivu-menu-item {
+    background-color: #001529;
+}
+
+
+/**标题栏TOP**/
+
+
+
+
+
+
+
+
+
