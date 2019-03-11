@@ -1,3 +1,12 @@
+/*
+ * @Author: 情雨随风 
+ * @Date: 2019-03-11 23:18:02 
+ * @Last Modified by:   Parker 
+ * @Last Modified time: 2019-03-11 23:18:02 
+ * @Types 首页子路由
+ */
+
+
 <template>
     <div id="MenuView">
         <Row :gutter="20">

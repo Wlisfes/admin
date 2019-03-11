@@ -7,22 +7,22 @@
                     <span>欢迎登录</span>
                 </p>
             </div>
-            <Form class="login-form" ref="formInline" :model="formInline" :rules="ruleInline">
-                <FormItem prop="user">
-                    <Input type="text" v-model="formInline.user" placeholder="Username" @keyup.enter.native="handleSubmit('formInline')">
+            <i-form class="login-form" ref="formInline" :model="formInline" :rules="ruleInline">
+                <form-item prop="user">
+                    <i-input type="text" v-model="formInline.user" placeholder="Username" @keyup.enter.native="handleSubmit('formInline')">
                         <Icon type="ios-person-outline" slot="prepend"></Icon>
-                    </Input>
-                </FormItem>
-                <FormItem prop="password">
-                    <Input type="password" v-model="formInline.password" placeholder="Password" @keyup.enter.native="handleSubmit('formInline')">
+                    </i-input>
+                </form-item>
+                <form-item prop="password">
+                    <i-input type="password" v-model="formInline.password" placeholder="Password" @keyup.enter.native="handleSubmit('formInline')">
                         <Icon type="ios-lock-outline" slot="prepend"></Icon>
-                    </Input>
-                </FormItem>
-                <FormItem>
+                    </i-input>
+                </form-item>
+                <form-item>
                     <Button type="primary" :loading="loadShow" @click="handleSubmit('formInline')">登录</Button>
-                </FormItem>
+                </form-item>
                 <p class="login-tip">输入任意用户名和密码即可</p>
-            </Form>
+            </i-form>
         </div>
     </div>
 </template>

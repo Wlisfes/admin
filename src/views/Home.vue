@@ -14,7 +14,7 @@
         <Layout>
             <x-header @collSider="collSider"></x-header>
             <Content :style="{padding: '20px', background: '#F5F7F9', minHeight: '260px',overflow: 'auto' }">
-                <x-menuview></x-menuview>
+                <router-view></router-view>
             </Content>
         </Layout>
     </Layout>
@@ -24,7 +24,6 @@
 import Menu from '../components/base/Menu'
 import MinMenu from '../components/base/MinMenu'
 import Header from '../components/base/Header'
-import MenuView from '../components/base/MenuView'
 
 
 export default {
@@ -63,11 +62,10 @@ export default {
     components: {
         'x-menu': Menu,
         'x-min-menu': MinMenu,
-        'x-header': Header,
-        'x-menuview': MenuView
+        'x-header': Header
     },
     created () {
-        this.ber()
+        // this.ber()
     }
 }
 </script>

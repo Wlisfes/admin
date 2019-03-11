@@ -14,40 +14,40 @@
                 <Icon type="ios-paper" />
                 文章管理
             </template>
-            <MenuItem name="1-1">文章列表</MenuItem>
-            <MenuItem name="1-2">添加文章</MenuItem>
-            <MenuItem name="1-3">草稿箱</MenuItem>
-            <MenuItem name="1-4">文章分类</MenuItem>
+            <MenuItem name="2-1">文章列表</MenuItem>
+            <MenuItem name="2-2">添加文章</MenuItem>
+            <MenuItem name="2-3">草稿箱</MenuItem>
+            <MenuItem name="2-4">文章分类</MenuItem>
         </Submenu>
         <Submenu name="3">
             <template slot="title">
                 <Icon type="ios-leaf" />
                 标签管理
             </template>
-            <MenuItem name="2-1">全部标签</MenuItem>
-            <MenuItem name="2-2">新增标签</MenuItem>
+            <MenuItem name="3-1" to="/all/label">全部标签</MenuItem>
+            <MenuItem name="3-2" to="/add/label">新增标签</MenuItem>
         </Submenu>
         <Submenu name="4">
             <template slot="title">
                 <Icon type="md-paper" />
                 留言板管理
             </template>
-            <MenuItem name="3-1">留言板</MenuItem>
+            <MenuItem name="4-1" to="/message">留言板</MenuItem>
         </Submenu>
         <Submenu name="5">
             <template slot="title">
                 <Icon type="ios-chatbubbles" />
                 评论管理
             </template>
-            <MenuItem name="3-1">文章评论</MenuItem>
+            <MenuItem name="5-1" to="/articlereview">文章评论</MenuItem>
         </Submenu>
         <Submenu name="6">
             <template slot="title">
                 <Icon type="ios-apps" />
                 项目管理
             </template>
-            <MenuItem name="3-1">全部项目</MenuItem>
-            <MenuItem name="3-2">新增项目</MenuItem>
+            <MenuItem name="6-1" to="/all/project">全部项目</MenuItem>
+            <MenuItem name="6-2" to="/add/project">新增项目</MenuItem>
         </Submenu>
     </Menu>
 </template>

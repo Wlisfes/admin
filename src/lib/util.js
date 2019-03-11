@@ -2,7 +2,7 @@
  * @Author: 情雨随风 
  * @Date: 2019-03-10 10:39:19 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-03-10 17:15:31
+ * @Last Modified time: 2019-03-11 22:54:16
  * @Types 工具函数
  */
 
@@ -28,4 +28,13 @@ export const getToken = () => {
         return token
     else
         return false
+}
+
+/**
+ * 删除token
+ */
+export const removeToken = () => {
+    Cookies.remove(TOKEN_KEY)
+
+    return false
 }

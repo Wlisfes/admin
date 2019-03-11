@@ -7,14 +7,15 @@
         </div>
 
         <div class="user-avator-dropdown">
-            <Dropdown>
+            <Dropdown trigger="click">
                 <Button class="avato" size="small" type="default" shape="circle">
                     情雨随风
                     <Icon type="ios-arrow-down"></Icon>
                 </Button>
                 <DropdownMenu slot="list">
-                    <DropdownItem>个人中心</DropdownItem>
-                    <DropdownItem>退出登录</DropdownItem>
+                    <DropdownItem>首页</DropdownItem>
+                    <DropdownItem>项目地址</DropdownItem>
+                    <DropdownItem @click.native="signOutEvent">退出登录</DropdownItem>
                 </DropdownMenu>
             </Dropdown>
         </div>
@@ -22,6 +23,7 @@
 </template>
 
 <script>
+import { removeToken } from '../../lib/util'
 export default {
     data () {
         return {
@@ -29,6 +31,7 @@ export default {
         }
     },
     methods: {
+        //全屏事件
         handleFullscreen () {
             let main = document.body
             if (this.value) {
@@ -55,6 +58,20 @@ export default {
 
                 this.value = true
             }
+        },
+        signOutEvent() {
+            this.$Modal.confirm({
+                title: '确定退出登录吗？',
+                content: '<p>退出登录后会散失全部功能，请您慎重考虑！</p>',
+                onOk: () => {
+                    console.log(`ok`)
+                    removeToken()
+                    this.$router.push({ path: `/` })
+                },
+                onCancel: () => {
+                    console.log(`cancel`)
+                }
+            })
         }
     }
 }

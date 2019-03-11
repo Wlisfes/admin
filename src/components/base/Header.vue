@@ -1,11 +1,11 @@
 <template>
     <Header :style="{padding: 0}" class="layout-header-bar">
-        <Icon @click.native="collapsedSider" 
+        <icon @click.native="collapsedSider" 
             style="cursor: pointer;" 
             :class="ClassName" 
             :style="{margin: '0 20px'}" 
             type="md-menu" size="24">
-        </Icon>
+        </icon>
         <x-home-back></x-home-back>
         <x-user-view></x-user-view>
     </Header>

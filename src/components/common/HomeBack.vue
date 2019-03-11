@@ -5,12 +5,6 @@
                 <Icon type="md-home" />
                 首页
             </BreadcrumbItem>
-            <BreadcrumbItem>
-                GitHub
-            </BreadcrumbItem>
-            <BreadcrumbItem>
-                Music
-            </BreadcrumbItem>
         </Breadcrumb>
     </div>
 </template>
