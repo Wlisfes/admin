@@ -2,7 +2,7 @@
  * @Author: 情雨随风 
  * @Date: 2019-03-10 12:54:28 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-03-11 23:34:05
+ * @Last Modified time: 2019-03-12 22:15:43
  * @Types 路由配置文件
  */
 
@@ -13,14 +13,15 @@ import Home from '../views/Home'
 
 const Routes = [
     {
-        path: '/logon',
+        path: '/login',
         name: 'login',
         component: Login
     },
     {
         path: '/',
-        name: '首页',
+        name: 'Home',
         component: Home,
+        redirect: '/homechild',
         children: [
             {
                 //首页
@@ -63,10 +64,6 @@ const Routes = [
                 path: '/add/project',
                 name: 'addproject',
                 component: () => import('../views/AddProject.vue')
-            },
-            {
-                path: '/',
-                redirect: '/homechild'
             }
         ]
     }

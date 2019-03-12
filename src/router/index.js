@@ -1,3 +1,4 @@
+
 import Vue from 'vue'
 import Router from 'vue-router'
 import Routes from './routes'
@@ -14,25 +15,33 @@ const router = new Router({
   routes: Routes
 })
 
-import $Witch from '../lib/witch-suit'
-const $witch = $Witch(router)
+// import $Witch from '../lib/witch-suit'
+// const $witch = $Witch(router)
 
-$witch.rules([
-  {
-    match: '/',
-    validator() {
-      let token = getToken()
-      console.log(token)
-      return token ? false : true
-    },
-    reactor() {
-      console.log('reactor /login')
-      return '/logon'
-    }
-  }
-])
+// $witch.rules([{
+//       match: '/',
+//       validator() {
+//         return true
+//       },
+//       reactor() {
+//         return `/logon`
+//       }
+//     }
+// ])
 
-$witch.before(() => iView.LoadingBar.start())
-$witch.after(() => iView.LoadingBar.finish())
+// $witch.before(() => iView.LoadingBar.start())
+// $witch.after(() => iView.LoadingBar.finish())
+
+
+router.beforeEach((to, from, next) => {
+    iView.LoadingBar.start()
+    // console.log(to)
+    
+    next()
+})
+
+router.afterEach(to => {
+    iView.LoadingBar.finish()
+})
 
 export default router

@@ -66,7 +66,7 @@ export default {
                 onOk: () => {
                     console.log(`ok`)
                     removeToken()
-                    this.$router.push({ path: `/` })
+                    this.$router.push({ path: `/login` })
                 },
                 onCancel: () => {
                     console.log(`cancel`)
