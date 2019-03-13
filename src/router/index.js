@@ -21,10 +21,12 @@ const router = new Router({
 // $witch.rules([{
 //       match: '/',
 //       validator() {
+//         console.log(1)
 //         return true
 //       },
 //       reactor() {
-//         return `/logon`
+//         console.log(2)
+//         return `/login`
 //       }
 //     }
 // ])
@@ -35,9 +37,26 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
     iView.LoadingBar.start()
-    // console.log(to)
-    
-    next()
+    const token = getToken()
+    console.log(token)
+    if (!token && to.name !== LOGIN_NAME) {
+      //未登录且要跳转的页面不是登录页
+      iView.Message.warning('未登录，请先登录！')
+      next({
+        name: LOGIN_NAME
+      })
+    } else if(!token && to.name === LOGIN_NAME) {
+      //未登陆且要跳转的页面是登录页
+      next()
+    } else if(token && to.name === LOGIN_NAME) {
+      //已登录且要跳转的页面是登录页
+      next({
+        name: 'Home'
+      })
+    } else {
+      next()
+    }
+ 
 })
 
 router.afterEach(to => {

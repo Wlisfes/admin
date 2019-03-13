@@ -2,7 +2,7 @@
  * @Author: 情雨随风 
  * @Date: 2019-03-10 12:54:28 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-03-12 22:15:43
+ * @Last Modified time: 2019-03-13 20:49:37
  * @Types 路由配置文件
  */
 
@@ -21,12 +21,12 @@ const Routes = [
         path: '/',
         name: 'Home',
         component: Home,
-        redirect: '/homechild',
+        redirect: '/home',
         children: [
             {
                 //首页
-                path: '/homechild',
-                name: 'homechild',
+                path: '/home',
+                name: 'home',
                 component: () => import('../views/HomeChild.vue')
             },
             {

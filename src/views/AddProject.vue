@@ -2,7 +2,7 @@
  * @Author: 情雨随风 
  * @Date: 2019-03-11 23:18:30 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-03-13 00:04:44
+ * @Last Modified time: 2019-03-13 23:08:26
  * @Types 新增项目
  */
 
@@ -15,9 +15,6 @@
             </FormItem>
             <FormItem>
                 <i-input v-model="formLeft.input2" placeholder="请输入项目描述"></i-input>
-            </FormItem>
-            <FormItem>
-                <i-input v-model="formLeft.input3" placeholder="请输入项目预览地址"></i-input>
             </FormItem>
             <FormItem>
                 <i-input v-model="formLeft.input3" placeholder="请输入项目GitHub地址"></i-input>
@@ -55,7 +52,8 @@
                 </Radio>
             </RadioGroup>
         </div>
-        <Button type="primary" class="submit">提 交</Button>
+        <Button type="primary" class="submit" @click.native="submitEvent">提 交</Button>
+        <Spin size="large" fix v-if="upload"></Spin>
     </div>
 </template>
 
@@ -69,12 +67,17 @@ export default {
                 input3: ''
             },
             Types: 'primary',
-            button4: ''
+            button4: '',
+            upload: false
         }
     },
     methods: {
-        selectLabelEvent(ops) {
-            this.Types = ops
+        submitEvent(ops) {
+            this.upload = true
+            setTimeout(() => {
+                this.upload = false
+                this.$Message.success('新增成功！')
+            }, 1500)
         }
     }
 }
@@ -82,6 +85,9 @@ export default {
 
 <style lang="stylus" scoped>
 #root {
+    position relative
+    height auto
+
     .root-Icon {
         .ivu-icon {
             font-size 24px
@@ -95,5 +101,6 @@ export default {
         margin-top 24px
         font-size 14px
     }
+
 }
 </style>

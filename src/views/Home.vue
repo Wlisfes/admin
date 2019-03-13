@@ -13,7 +13,7 @@
         </Sider>
         <Layout>
             <x-header @collSider="collSider"></x-header>
-            <Content :style="{padding: '20px', background: '#FFF', minHeight: '260px',overflow: 'auto' }">
+            <Content :style="{padding: '20px', background: '#FFF', minHeight: '260px',overflow: 'auto', position: 'relative' }">
                 <router-view></router-view>
             </Content>
         </Layout>

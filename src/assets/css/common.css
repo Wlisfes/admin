@@ -19,7 +19,14 @@
 }
 
 
-/**标题栏TOP**/
+.ivu-drawer-wrap .ivu-icon {
+    font-size:24px  
+}
+
+.ivu-drawer-wrap .submit {
+    margin-top: 24px;
+    font-size: 14px;
+}
 
 
 
