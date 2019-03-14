@@ -4,13 +4,17 @@
  * @Author: 情雨随风 
  * @Date: 2019-03-10 22:46:55 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-03-10 23:46:20
+ * @Last Modified time: 2019-03-14 21:53:53
  * @Types axios配置
  */
 
 
 import axios from 'axios'
 import logo from './axios.logo'
+
+
+axios.defaults.baseURL='http://localhost:3000'
+// axios.defaults.withCredentials = true
 
 
 //请求拦截器
@@ -34,19 +38,24 @@ axios.interceptors.response.use(
     }
 )
 
-
-const Request = async ops => {
-    if(ops.method === "POST") 
-        return axios({
-            url: ops.url,
-            method: ops.method,
-            data: ops.data
-        })
-    else if(ops.method === "GET")
-        return axios(ops.url, {
-            method: ops.method,
-            params: ops.data
-        })
+const Request = (param, url, type = 'GET') => {
+    return new Promise((resolve, reject) => {
+        if (type == 'GET') {
+            axios.get(url, param).then(res => {
+                resolve(res.data)
+            }).catch(e => {
+                reject(e)
+            })
+        }
+        else if(type == 'POST') {
+            axios.post(url, param.params).then(res => {
+                resolve(res.data)
+            }).catch(e => {
+                reject(e)
+            })
+        }
+    })
 }
+
 
 export default Request 

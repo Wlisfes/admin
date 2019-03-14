@@ -4,6 +4,9 @@
             <template slot-scope="{ row }" slot="name">
                 <strong>{{ row.name }}</strong>
             </template>
+            <!-- <template  slot="status">
+                <Button type="default" :size="small">编辑</Button>
+            </template> -->
             <template slot-scope="{ row, index }" slot="action">
                 <Button type="primary" style="margin-right: 10px" @click="show(index)">编辑</Button>
                 <Button type="error" @click="remove(index)">删除</Button>
@@ -59,7 +62,7 @@
                     </RadioGroup>
                 </div>
                 <div style="margin-top: 24px">
-                    <i-switch size="large">
+                    <i-switch size="large" v-model="form.status">
                         <span slot="open">开启</span>
                         <span slot="close">关闭</span>
                     </i-switch>
@@ -86,9 +89,9 @@ export default {
             form: {
                 name: '',
                 description: '',
-                view: '',
                 types: 'nodejs',
-                github: ''
+                github: '',
+                status: false
             },
             editload: false,
 
@@ -116,12 +119,31 @@ export default {
                     title: 'GitHub地址',
                     key: 'github'
                 },
+                // {
+                //     title: '状态',
+                //     key: 'status',
+                //     slot: 'status',
+                //     width: 100,
+                //     align: 'center'
+                // },
                 {
-                    title: '状态',
-                    key: 'status',
-                    width: 100,
-                    align: 'center'
-                },
+                        title: 'status',
+                        key: 'status',
+                        width: 140,
+                        align: 'center',
+                        render: (h, params) => {
+                            const row = params.row;
+                            const color = row.status ? 'success':'error';
+                            const text = row.status ? '已发布' : '未发布'
+
+                            return h('Tag', {
+                                props: {
+                                    type: 'dot',
+                                    color: color
+                                }
+                            }, text);
+                        }
+                    },
                 {
                     title: '操作',
                     slot: 'action',
@@ -140,6 +162,7 @@ export default {
             this.form.name = Data.name
             this.form.description = Data.description
             this.form.github = Data.github
+            this.form.status = Data.status
 
             this.value1 = true
         },
@@ -166,6 +189,7 @@ export default {
         submitEvent() {
                 this.editload = true
                 console.log(this.form)
+
             setTimeout(() => {
                 this.editload = false
                 this.value1 = false
@@ -181,7 +205,7 @@ export default {
                     description: "使用nodejs koa框架搭建的微信公众号后台",
                     types: 'nodejs',
                     github: 'https://github.com/Wlisfes/WeChat',
-                    status: '已发布'
+                    status: true
                 })
         }
 

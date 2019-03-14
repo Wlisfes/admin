@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router/index'
-import api from './api'
+import * as api from './api/api'
 import store from './store'
 import iView from 'iview';
 import 'iview/dist/styles/iview.css'

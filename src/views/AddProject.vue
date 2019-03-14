@@ -2,7 +2,7 @@
  * @Author: 情雨随风 
  * @Date: 2019-03-11 23:18:30 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-03-13 23:08:26
+ * @Last Modified time: 2019-03-14 21:54:06
  * @Types 新增项目
  */
 
@@ -11,18 +11,18 @@
     <div id="#root">
         <i-form>
             <FormItem>
-                <i-input v-model="formLeft.input1" placeholder="请输入项目名称"></i-input>
+                <i-input v-model="form.name" placeholder="请输入项目名称"></i-input>
             </FormItem>
             <FormItem>
-                <i-input v-model="formLeft.input2" placeholder="请输入项目描述"></i-input>
+                <i-input v-model="form.description" placeholder="请输入项目描述"></i-input>
             </FormItem>
             <FormItem>
-                <i-input v-model="formLeft.input3" placeholder="请输入项目GitHub地址"></i-input>
+                <i-input v-model="form.github" placeholder="请输入项目GitHub地址"></i-input>
             </FormItem>
         </i-form>
 
         <div class="root-Icon">
-            <RadioGroup v-model="button4" type="button" size="large">
+            <RadioGroup v-model="form.types" type="button" size="large">
                 <Radio label="vuejs">
                     <Icon custom="iconfont icon-vuejs" size="24" />
                 </Radio>
@@ -52,6 +52,12 @@
                 </Radio>
             </RadioGroup>
         </div>
+        <div style="margin-top: 24px">
+            <i-switch size="large" v-model="form.status">
+                <span slot="open">开启</span>
+                <span slot="close">关闭</span>
+            </i-switch>
+        </div>
         <Button type="primary" class="submit" @click.native="submitEvent">提 交</Button>
         <Spin size="large" fix v-if="upload"></Spin>
     </div>
@@ -61,23 +67,48 @@
 export default {
     data () {
         return {
-            formLeft: {
-                input1: '',
-                input2: '',
-                input3: ''
+            form: {
+                name: '',
+                description: '',
+                types: '',
+                github: '',
+                status: false
             },
             Types: 'primary',
-            button4: '',
             upload: false
         }
     },
     methods: {
-        submitEvent(ops) {
-            this.upload = true
-            setTimeout(() => {
+        //提交
+        async submitEvent() {
+            let param = this.form
+                
+            if(!param.name)
+                this.$Message.info('请输入项目名称')
+
+            else if(!param.description)
+                this.$Message.info('请输入项目描述')
+
+            else if(!param.github)
+                this.$Message.info('请输入项目GitHub地址')
+
+            else if(!param.types)
+                this.$Message.info('请选择项目类型')
+
+            else
                 this.upload = false
-                this.$Message.success('新增成功！')
-            }, 1500)
+
+                let res = await this.api.AddItem({
+                    // params: {
+                        name: 1
+                    // }
+                })
+
+                console.log(res)
+
+                // this.$Message.success('新增成功！')
+            
+           
         }
     }
 }
