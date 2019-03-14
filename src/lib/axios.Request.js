@@ -4,7 +4,7 @@
  * @Author: 情雨随风 
  * @Date: 2019-03-10 22:46:55 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-03-14 21:53:53
+ * @Last Modified time: 2019-03-14 23:26:00
  * @Types axios配置
  */
 
@@ -48,7 +48,7 @@ const Request = (param, url, type = 'GET') => {
             })
         }
         else if(type == 'POST') {
-            axios.post(url, param.params).then(res => {
+            axios.post(url, param).then(res => {
                 resolve(res.data)
             }).catch(e => {
                 reject(e)

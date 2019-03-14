@@ -2,7 +2,7 @@
  * @Author: 情雨随风 
  * @Date: 2019-03-11 23:18:30 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-03-14 21:54:06
+ * @Last Modified time: 2019-03-14 23:40:31
  * @Types 新增项目
  */
 
@@ -81,34 +81,36 @@ export default {
     methods: {
         //提交
         async submitEvent() {
-            let param = this.form
-                
-            if(!param.name)
+            let ops = this.form
+            
+            if(!ops.name) {
                 this.$Message.info('请输入项目名称')
-
-            else if(!param.description)
+            }
+            else if(!ops.description) {
                 this.$Message.info('请输入项目描述')
-
-            else if(!param.github)
+            }
+            else if(!ops.github) {
                 this.$Message.info('请输入项目GitHub地址')
-
-            else if(!param.types)
+            }
+            else if(!ops.types) {
                 this.$Message.info('请选择项目类型')
+            }
+            else {
+                this.upload = true
 
-            else
-                this.upload = false
-
-                let res = await this.api.AddItem({
-                    // params: {
-                        name: 1
-                    // }
-                })
+                let res = await this.api.setItem(ops)
 
                 console.log(res)
 
-                // this.$Message.success('新增成功！')
-            
-           
+                this.$Message.success('新增成功！')
+                
+                this.form.name = ''
+                this.form.description = ''
+                this.form.types = ''
+                this.form.github = ''
+                this.form.status = false
+                this.upload = false
+            }
         }
     }
 }

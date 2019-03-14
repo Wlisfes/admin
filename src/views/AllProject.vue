@@ -119,15 +119,8 @@ export default {
                     title: 'GitHub地址',
                     key: 'github'
                 },
-                // {
-                //     title: '状态',
-                //     key: 'status',
-                //     slot: 'status',
-                //     width: 100,
-                //     align: 'center'
-                // },
                 {
-                        title: 'status',
+                        title: '状态',
                         key: 'status',
                         width: 140,
                         align: 'center',
@@ -195,21 +188,18 @@ export default {
                 this.value1 = false
                 this.$Message.success('修改成功！')
             }, 1500)
+        },
+        //获取项目
+        async getItem() {
+            let res = await this.api.getItem()
+
+            this.data6 = res
         }
     },
     created () {
-        let arr = []
-        for(let i = 0; i < 15; i++) {
-            arr.push({
-                    name: 'WeChat',
-                    description: "使用nodejs koa框架搭建的微信公众号后台",
-                    types: 'nodejs',
-                    github: 'https://github.com/Wlisfes/WeChat',
-                    status: true
-                })
-        }
+        
 
-        this.data6 = arr
+        this.getItem()
     }
 }
 </script>
