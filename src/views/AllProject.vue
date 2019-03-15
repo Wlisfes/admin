@@ -91,7 +91,8 @@ export default {
                 description: '',
                 types: 'nodejs',
                 github: '',
-                status: false
+                status: false,
+                _id: ''
             },
             editload: false,
 
@@ -156,6 +157,7 @@ export default {
             this.form.description = Data.description
             this.form.github = Data.github
             this.form.status = Data.status
+            this.form._id = Data._id
 
             this.value1 = true
         },
@@ -179,21 +181,25 @@ export default {
 
         },
         //提交
-        submitEvent() {
-                this.editload = true
-                console.log(this.form)
+        async submitEvent() {
+            let ops = this.form
 
-            setTimeout(() => {
+                this.editload = true
+            let res = await this.api.updateItem(ops)
+
+                this.data6 = res.data
+                console.log(res)
+
                 this.editload = false
                 this.value1 = false
                 this.$Message.success('修改成功！')
-            }, 1500)
+            
         },
         //获取项目
         async getItem() {
             let res = await this.api.getItem()
 
-            this.data6 = res
+            this.data6 = res.data
         }
     },
     created () {
