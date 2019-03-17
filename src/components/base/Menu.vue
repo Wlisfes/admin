@@ -14,10 +14,10 @@
                 <Icon type="ios-paper" />
                 文章管理
             </template>
-            <MenuItem name="2-1">文章列表</MenuItem>
-            <MenuItem name="2-2">添加文章</MenuItem>
-            <MenuItem name="2-3">草稿箱</MenuItem>
-            <MenuItem name="2-4">文章分类</MenuItem>
+            <MenuItem name="2-1" to="/all/tulist">文章列表</MenuItem>
+            <MenuItem name="2-2" to="/add/tubook">添加文章</MenuItem>
+            <MenuItem name="2-3" to="/dll/turubb">草稿箱</MenuItem>
+            <!-- <MenuItem name="2-4">文章分类</MenuItem> -->
         </Submenu>
         <Submenu name="3">
             <template slot="title">

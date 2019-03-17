@@ -28,6 +28,13 @@
     font-size: 14px;
 }
 
+#root .ql-tooltip {
+    left: 0px !important;
+}
+
+#root .ql-editor {
+    min-height: 400px;
+}
 
 
 

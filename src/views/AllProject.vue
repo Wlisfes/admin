@@ -103,7 +103,7 @@ export default {
                 {
                     title: '项目名称',
                     slot: 'name',
-                    width: 150,
+                    width: 120,
                     align: 'center'
                 },
                 {
@@ -167,12 +167,7 @@ export default {
                 title: '删除项目',
                 content: '<p>确定要删除此项目吗？</p>',
                 onOk: () => {
-                    this.deleteload = true
-                    setTimeout(() => {
-                        this.deleteload = false
-                        this.$Message.success('删除成功！')
-                        this.data6.splice(index, 1);
-                    }, 1500)
+                    this.deleteItem(index)
                 },
                 onCancel: () => {
                     console.log('Cancel')
@@ -180,7 +175,7 @@ export default {
             });
 
         },
-        //提交
+        //提交修改
         async submitEvent() {
             let ops = this.form
 
@@ -200,6 +195,22 @@ export default {
             let res = await this.api.getItem()
 
             this.data6 = res.data
+        },
+        //删除项目
+        async deleteItem(index) {
+            let { _id } = this.data6[index]
+
+            this.deleteload = true
+            let res = await this.api.deleteItem({
+                params: {
+                    _id
+                }
+            })
+            
+            this.data6 = res.data
+            this.deleteload = false
+            this.$Message.success('删除成功！')
+            
         }
     },
     created () {

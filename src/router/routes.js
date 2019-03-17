@@ -2,7 +2,7 @@
  * @Author: 情雨随风 
  * @Date: 2019-03-10 12:54:28 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-03-13 20:49:37
+ * @Last Modified time: 2019-03-15 22:34:48
  * @Types 路由配置文件
  */
 
@@ -28,6 +28,23 @@ const Routes = [
                 path: '/home',
                 name: 'home',
                 component: () => import('../views/HomeChild.vue')
+            },{
+                //文章列表
+                path: '/all/tulist',
+                name: 'tulist',
+                component: () => import('../views/TuList.vue')
+            },
+            {
+                //添加文章
+                path: '/add/tubook',
+                name: 'tubook',
+                component: () => import('../views/Tubook.vue')
+            },
+            {
+                //草稿箱
+                path: '/dll/turubb',
+                name: 'turubb',
+                component: () => import('../views/TuRubb.vue')
             },
             {
                 //全部标签

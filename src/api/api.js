@@ -2,7 +2,7 @@
  * @Author: 情雨随风 
  * @Date: 2019-03-10 23:18:35 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-03-15 17:39:51
+ * @Last Modified time: 2019-03-16 21:25:02
  * @Types 接口文件
  */
 
@@ -27,5 +27,10 @@ export const updateItem = param => {
 
 //删除项目
 export const deleteItem = param => {
-    return Request(param, `/update/item`, 'GET')
+    return Request(param, `/delete/item`, 'GET')
+}
+
+//
+export const tm = param => {
+    return Request(param, `/tm`, 'GET')
 }
