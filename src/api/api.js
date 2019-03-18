@@ -2,7 +2,7 @@
  * @Author: 情雨随风 
  * @Date: 2019-03-10 23:18:35 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-03-16 21:25:02
+ * @Last Modified time: 2019-03-18 21:10:03
  * @Types 接口文件
  */
 
@@ -12,25 +12,21 @@ import Request from '../lib/axios.Request'
 
 //新增项目
 export const setItem = param => {
-    return Request(param, `/set/item`, 'POST')
+    return Request(param, `/item/set`, 'POST')
 }
 
 //获取项目
 export const getItem = param => {
-    return Request(param, `/get/item`, 'GET')
+    return Request(param, `/item/get`, 'GET')
 }
 
 //修改项目信息
 export const updateItem = param => {
-    return Request(param, `/update/item`, 'POST')
+    return Request(param, `/item/update`, 'POST')
 }
 
 //删除项目
 export const deleteItem = param => {
-    return Request(param, `/delete/item`, 'GET')
+    return Request(param, `/item/delete`, 'GET')
 }
 
-//
-export const tm = param => {
-    return Request(param, `/tm`, 'GET')
-}

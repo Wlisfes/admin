@@ -2,14 +2,14 @@
  * @Author: 情雨随风 
  * @Date: 2019-03-15 22:26:34 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-03-16 21:27:12
+ * @Last Modified time: 2019-03-18 20:38:43
  * @Types 添加文章
  */
 
 
 <template>
     <div id="root">
-        <div class="root-form">
+        <div class="root-form" v-if="true">
             <i-form>
                 <FormItem>
                     <i-input v-model="form.name" placeholder="请输入文章标题"></i-input>
@@ -53,12 +53,13 @@
 
         <div class="root-edit">
             <vue-editor v-model="content"></vue-editor>
+            <div v-html="content"></div>
         </div>
     </div>
 </template>
 
 <script>
-import { VueEditor } from "vue2-editor"
+import { VueEditor,Quill  } from "vue2-editor"
 export default {
     data () {
         return {
@@ -72,17 +73,13 @@ export default {
         }
     },
     methods: {
-        async tm () {
-            let res = await this.api.tm()
-            
-            console.log(res.result.list[0].editContent)
-        }
+        
     },
     components: {
         VueEditor
     },
     created () {
-        this.tm()
+        console.log(Quill)
     }
 }
 </script>
