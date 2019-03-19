@@ -2,7 +2,7 @@
  * @Author: 情雨随风 
  * @Date: 2019-03-15 22:26:34 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-03-18 20:38:43
+ * @Last Modified time: 2019-03-19 16:34:40
  * @Types 添加文章
  */
 
@@ -53,7 +53,7 @@
 
         <div class="root-edit">
             <vue-editor v-model="content"></vue-editor>
-            <div v-html="content"></div>
+            <div>{{content}}</div>
         </div>
     </div>
 </template>

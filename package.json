@@ -3,16 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "highlight.js": "^9.15.6",
     "iview": "^3.3.0",
     "js-cookie": "^2.2.0",
     "micromatch": "^3.1.10",
     "vue": "^2.6.6",
+    "vue-highlight.js": "^3.1.0",
     "vue-router": "^3.0.1",
     "vue2-editor": "^2.6.6",
     "vuex": "^3.0.1"
