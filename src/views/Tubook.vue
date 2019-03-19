@@ -2,7 +2,7 @@
  * @Author: 情雨随风 
  * @Date: 2019-03-15 22:26:34 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-03-19 16:34:40
+ * @Last Modified time: 2019-03-19 23:24:29
  * @Types 添加文章
  */
 
@@ -52,14 +52,20 @@
         </div>
 
         <div class="root-edit">
-            <vue-editor v-model="content"></vue-editor>
-            <div>{{content}}</div>
+            <mark-down ref="markdown"
+                       :theme="markdown.theme"
+                       :mode="markdown.mode" 
+                       :autoSave="markdown.autoSave" 
+                       :initialValue="markdown.initialValue"
+                       @on-save="save"/>
+
+            <Button type="primary" @click.native="seta">save</Button>
         </div>
     </div>
 </template>
 
 <script>
-import { VueEditor,Quill  } from "vue2-editor"
+import MarkDown from 'vue-meditor'
 export default {
     data () {
         return {
@@ -68,18 +74,50 @@ export default {
                 subtitle: '',
                 types: ''
             },
-            content: ''
-            
+
+            a: false,
+
+            //编辑器配置
+            markdown: {
+                theme: "OneDark",
+                mode: 2,
+                autoSave: false,
+                initialValue: ``
+            }
         }
     },
     methods: {
-        
+        save(ops) {
+            console.log(ops)
+            if(this.a) this.setTubok(ops)
+            
+        },
+        async setTubok(body) {
+            let { markdownValue } = body
+            let res = await this.api.setTubok({
+                content: markdownValue
+            })
+
+            console.log(res)
+        },
+        async getTubokid() {
+            let res = await this.api.getTubokid({
+                params: {
+                    _id: "5c9105fc7d8b302768ce38d5"
+                }
+            })
+            this.markdown.initialValue = res.data[0].content
+            console.log(res)
+        },
+        seta() {
+            this.$refs.markdown.handleSave()
+        }
     },
     components: {
-        VueEditor
+        MarkDown
     },
     created () {
-        console.log(Quill)
+        this.getTubokid()
     }
 }
 </script>
@@ -88,7 +126,7 @@ export default {
 #root {
     
     .root-Icon {
-        margin-bottom 40px
+        margin-bottom 20px
 
         .ivu-icon {
             font-size 24px

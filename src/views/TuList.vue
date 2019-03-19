@@ -2,7 +2,7 @@
  * @Author: Parker 
  * @Date: 2019-03-19 14:23:35 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-03-19 14:44:47
+ * @Last Modified time: 2019-03-19 20:39:33
  * @Types 文章列表
  */
 
@@ -14,7 +14,7 @@
                 <strong>{{ row.title }}</strong>
             </template>
             <template slot-scope="{ row }" slot="image">
-                <img width="80" :src="row.image" alt="456" srcset="">
+                <img style="margin: 5px auto;display: block;" width="80" :src="row.image" alt="456" srcset="">
             </template>
             <template slot-scope="{ row, index }" slot="action">
                 <Button type="primary" style="margin-right: 10px" @click="show(index)">编辑</Button>
