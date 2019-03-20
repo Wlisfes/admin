@@ -2,7 +2,7 @@
  * @Author: Parker 
  * @Date: 2019-03-19 14:23:35 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-03-19 20:39:33
+ * @Last Modified time: 2019-03-20 21:32:56
  * @Types 文章列表
  */
 
@@ -32,25 +32,12 @@
 export default {
     data () {
         return {
-            value1: false,
             DrawerStyle: {
                 height: 'calc(100% - 55px)',
                 overflow: 'auto',
                 paddingBottom: '53px',
                 position: 'static'
             },
-            //编辑Data
-            form: {
-                name: '',
-                description: '',
-                types: 'nodejs',
-                github: '',
-                status: false,
-                _id: ''
-            },
-            editload: false,
-
-
 
             deleteload: false,
             columns12: [
@@ -123,14 +110,12 @@ export default {
         async switchChange(e,index) {
             let { _id } = this.data6[index]
 
-            this.editload = true
             let res = await this.api.updateTubokStatusid({
                 _id: _id,
                 status: e
             })
 
             setTimeout(() => {
-                this.editload = false
                 this.data6 = res.data
                 this.$Message.success(
                     e ? '发布成功' : '已取消发布'

@@ -2,7 +2,7 @@
  * @Author: 情雨随风 
  * @Date: 2019-03-15 22:26:34 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-03-19 23:24:29
+ * @Last Modified time: 2019-03-20 22:54:52
  * @Types 添加文章
  */
 
@@ -12,10 +12,13 @@
         <div class="root-form" v-if="true">
             <i-form>
                 <FormItem>
-                    <i-input v-model="form.name" placeholder="请输入文章标题"></i-input>
+                    <i-input v-model="form.title" placeholder="请输入文章标题"></i-input>
                 </FormItem>
                 <FormItem>
-                    <i-input v-model="form.subtitle" placeholder="请输入文章描述"></i-input>
+                    <i-input v-model="form.descript" placeholder="请输入文章描述"></i-input>
+                </FormItem>
+                <FormItem>
+                    <i-input v-model="form.image" placeholder="请输入缩略图链接"></i-input>
                 </FormItem>
             </i-form>
             <div class="root-Icon">
@@ -48,6 +51,9 @@
                         <Icon type="logo-nodejs" />
                     </Radio>
                 </RadioGroup>
+
+                <div class="primary"></div>
+                <Button type="primary" style="margin: auto;" @click.native="saveClick">保存</Button>
             </div>
         </div>
 
@@ -58,8 +64,6 @@
                        :autoSave="markdown.autoSave" 
                        :initialValue="markdown.initialValue"
                        @on-save="save"/>
-
-            <Button type="primary" @click.native="seta">save</Button>
         </div>
     </div>
 </template>
@@ -70,17 +74,16 @@ export default {
     data () {
         return {
             form: {
-                name: '',
-                subtitle: '',
-                types: ''
+                title: '',
+                descript: '',
+                types: '',
+                image: ''
             },
-
-            a: false,
 
             //编辑器配置
             markdown: {
                 theme: "OneDark",
-                mode: 2,
+                mode: 1,
                 autoSave: false,
                 initialValue: ``
             }
@@ -89,36 +92,59 @@ export default {
     methods: {
         //富文本保存监听事件
         save(ops) {
-            console.log(ops)
-            if(this.a) this.setTubok(ops)
+            this.setTubok(ops)
         },
         //保存事件
         async setTubok(body) {
+            let { title,descript,types,image } = this.form
             let { markdownValue } = body
+
             let res = await this.api.setTubok({
-                content: markdownValue
+                content: markdownValue,
+                title: title,
+                descript: descript,
+                types: types,
+                image: image
             })
 
             console.log(res)
         },
+        //根据id获取内容
         async getTubokid() {
             let res = await this.api.getTubokid({
                 params: {
-                    _id: "5c91e142961af747dcba9d3f"
+                    _id: "5c9253b066e1c02eeb61cbe9"
                 }
             })
+            
             this.markdown.initialValue = res.data[0].content
-            console.log(res)
         },
-        seta() {
-            this.$refs.markdown.handleSave()
+        //手动保存
+        saveClick() {
+            let { title,descript,types,image } = this.form
+
+            if(!title) {
+                this.$Message.info('请输入标题')
+                return
+            } else if (!descript) {
+                this.$Message.info('请输入描述')
+                return
+            } else if (!types) {
+                this.$Message.info('请选择标签')
+                return
+            } else if (!image) {
+                this.$Message.info('请输入缩略图地址')
+                return
+            } else {
+                this.$refs.markdown.handleSave()
+            }
         }
     },
     components: {
         MarkDown
     },
     created () {
-        // this.getTubokid()
+        this.getTubokid()
     }
 }
 </script>
@@ -128,12 +154,18 @@ export default {
     
     .root-Icon {
         margin-bottom 20px
+        display flex
+        flex-direction row
 
         .ivu-icon {
             font-size 24px
         }
         .ivu-btn {
             margin-right 12px
+        }
+
+        .primary {
+            flex 1
         }
     }
 
