@@ -17,8 +17,11 @@
                 <img style="margin: 5px auto;display: block;" width="80" :src="row.image" alt="456" srcset="">
             </template>
             <template slot-scope="{ row, index }" slot="action">
-                <Button type="primary" style="margin-right: 10px" @click="show(index)">编辑</Button>
-                <Button type="error" @click="remove(index)">删除</Button>
+                <i-switch size="large" v-model="row.status" @on-change="switchChange($event,index)" style="margin-right: 10px">
+                    <span slot="open">NO</span>
+                    <span slot="close">OFF</span>
+                </i-switch>
+                <Button type="primary" @click="move(index)">草稿</Button>
             </template>
         </Table>
 
@@ -102,25 +105,13 @@ export default {
         }
     },
     methods: {
-        //编辑
-        show (index) {
-            let Data = this.data6[index]
-            
-            this.form.name = Data.name
-            this.form.description = Data.description
-            this.form.github = Data.github
-            this.form.status = Data.status
-            this.form._id = Data._id
-
-            this.value1 = true
-        },
-        //删除
-        remove (index) {
+        //设置为草稿
+        move (index) {
             this.$Modal.confirm({
-                title: '删除项目',
-                content: '<p>确定要删除此项目吗？</p>',
+                title: '设置为草稿',
+                content: '<p>确定要将此文章添加到草稿箱吗？</p>',
                 onOk: () => {
-                    this.deleteItem(index)
+                    this.updateTubokDraftid(index)
                 },
                 onCancel: () => {
                     console.log('Cancel')
@@ -128,49 +119,51 @@ export default {
             });
 
         },
-        //提交修改
-        async submitEvent() {
-            let ops = this.form
+        //开关change事件
+        async switchChange(e,index) {
+            let { _id } = this.data6[index]
 
-                this.editload = true
-            let res = await this.api.updateItem(ops)
+            this.editload = true
+            let res = await this.api.updateTubokStatusid({
+                _id: _id,
+                status: e
+            })
 
-                this.data6 = res.data
-                console.log(res)
-
+            setTimeout(() => {
                 this.editload = false
-                this.value1 = false
-                this.$Message.success('修改成功！')
-            
+                this.data6 = res.data
+                this.$Message.success(
+                    e ? '发布成功' : '已取消发布'
+                )
+                console.log(res)
+            },300)
         },
         //获取全部文章
-        async getTubok() {
-            let res = await this.api.getTubok()
+        async getTubokAll() {
+            let res = await this.api.getTubokAll()
 
             this.data6 = res.data
             console.log(res.data)
         },
-        //删除项目
-        async deleteItem(index) {
+        //设置为草稿
+        async updateTubokDraftid(index) {
             let { _id } = this.data6[index]
 
             this.deleteload = true
-            let res = await this.api.deleteItem({
-                params: {
-                    _id
-                }
-            })
+            let res = await this.api.updateTubokDraftid({
+                    _id: _id,
+                    draft: true
+                })
             
             this.data6 = res.data
             this.deleteload = false
-            this.$Message.success('删除成功！')
-            
+            this.$Message.success('添加成功')
         }
     },
     created () {
         
 
-        this.getTubok()
+        this.getTubokAll()
     }
 }
 </script>

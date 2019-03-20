@@ -87,11 +87,12 @@ export default {
         }
     },
     methods: {
+        //富文本保存监听事件
         save(ops) {
             console.log(ops)
             if(this.a) this.setTubok(ops)
-            
         },
+        //保存事件
         async setTubok(body) {
             let { markdownValue } = body
             let res = await this.api.setTubok({
@@ -103,7 +104,7 @@ export default {
         async getTubokid() {
             let res = await this.api.getTubokid({
                 params: {
-                    _id: "5c9105fc7d8b302768ce38d5"
+                    _id: "5c91e142961af747dcba9d3f"
                 }
             })
             this.markdown.initialValue = res.data[0].content
@@ -117,7 +118,7 @@ export default {
         MarkDown
     },
     created () {
-        this.getTubokid()
+        // this.getTubokid()
     }
 }
 </script>

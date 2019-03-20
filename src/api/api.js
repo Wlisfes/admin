@@ -31,16 +31,17 @@ export const deleteItem = param => {
 }
 
 //获取全部文章
-export const getTubok = param => {
-    return Request(param, `/tubok/get`, 'GET')
+export const getTubokAll = param => {
+    return Request(param, `/tubok/get/all`, 'GET')
 }
 
-//根据id获取文章
-export const getTubokid = param => {
-    return Request(param, `/tubok/get/id`, 'GET')
+//根据id修改文章是否发布
+export const updateTubokStatusid = param => {
+    return Request(param, `/update/tubokstatus/id`, 'POST')
 }
 
-//新增文章
-export const setTubok = param => {
-    return Request(param, `/tubok/set`, 'POST')
+//根据id设置是否为草稿
+export const updateTubokDraftid = param => {
+    return Request(param, `/update/tubokdraft/id`, 'POST')
 }
+
