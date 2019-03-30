@@ -2,7 +2,7 @@
  * @Author: 情雨随风 
  * @Date: 2019-03-15 22:26:34 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-03-20 22:54:52
+ * @Last Modified time: 2019-03-30 14:05:33
  * @Types 添加文章
  */
 
@@ -113,7 +113,7 @@ export default {
         async getTubokid() {
             let res = await this.api.getTubokid({
                 params: {
-                    _id: "5c9253b066e1c02eeb61cbe9"
+                    _id: "5c924fdb5c00c83418896a09"
                 }
             })
             
@@ -144,7 +144,7 @@ export default {
         MarkDown
     },
     created () {
-        this.getTubokid()
+        // this.getTubokid()
     }
 }
 </script>

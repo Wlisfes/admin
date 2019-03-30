@@ -157,6 +157,7 @@ export default {
             this.form.description = Data.description
             this.form.github = Data.github
             this.form.status = Data.status
+            this.form.types = Data.types
             this.form._id = Data._id
 
             this.value1 = true
