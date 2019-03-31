@@ -71,7 +71,6 @@
                 <Spin size="large" fix v-if="editload"></Spin>
             </Drawer>
         </template>
-        <Page style="margin-top: 24px" :total="100" show-total :page-size="10" />
     </div>
 </template>
 <script>

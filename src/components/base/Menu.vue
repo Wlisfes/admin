@@ -25,7 +25,6 @@
                 标签管理
             </template>
             <MenuItem name="3-1" to="/all/label">全部标签</MenuItem>
-            <MenuItem name="3-2" to="/add/label">新增标签</MenuItem>
         </Submenu>
         <Submenu name="4">
             <template slot="title">

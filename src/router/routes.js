@@ -2,7 +2,7 @@
  * @Author: 情雨随风 
  * @Date: 2019-03-10 12:54:28 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-03-15 22:34:48
+ * @Last Modified time: 2019-03-31 16:44:33
  * @Types 路由配置文件
  */
 
@@ -51,12 +51,6 @@ const Routes = [
                 path: '/all/label',
                 name: 'alllabel',
                 component: () => import('../views/AllLabel.vue')
-            },
-            {
-                //新增标签
-                path: '/add/label',
-                name: 'addlabel',
-                component: () => import('../views/AddLabel.vue')
             },
             {
                 //留言板
