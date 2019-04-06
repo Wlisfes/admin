@@ -2,7 +2,7 @@
  * @Author: 情雨随风 
  * @Date: 2019-03-10 12:54:28 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-03-31 16:44:33
+ * @Last Modified time: 2019-04-05 19:23:45
  * @Types 路由配置文件
  */
 
@@ -45,6 +45,18 @@ const Routes = [
                 path: '/dll/turubb',
                 name: 'turubb',
                 component: () => import('../views/TuRubb.vue')
+            },
+            {
+                //添加笔记
+                path: '/Add/Notes',
+                name: 'AddNotes',
+                component: () => import('../views/AddNotes.vue')
+            },
+            {
+                //笔记列表
+                path: '/All/Notes',
+                name: 'AllNotes',
+                component: () => import('../views/AllNotes.vue')
             },
             {
                 //全部标签

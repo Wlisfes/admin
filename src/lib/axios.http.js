@@ -4,7 +4,7 @@
  * @Author: 情雨随风 
  * @Date: 2019-03-10 22:46:55 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-03-31 21:25:38
+ * @Last Modified time: 2019-04-05 18:31:08
  * @Types axios配置
  */
 
@@ -13,8 +13,8 @@ import axios from 'axios'
 import logo from './axios.logo'
 
 
-// axios.defaults.baseURL='http://localhost:3000'
-axios.defaults.baseURL='http://api.lisfes.cn'
+axios.defaults.baseURL='http://localhost:3000'
+// axios.defaults.baseURL='http://api.lisfes.cn'
 // axios.defaults.withCredentials = true
 
 

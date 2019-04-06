@@ -2,7 +2,7 @@
  * @Author: 情雨随风 
  * @Date: 2019-03-10 23:18:35 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-03-31 21:25:25
+ * @Last Modified time: 2019-04-06 01:08:26
  * @Types 接口文件
  */
 
@@ -54,3 +54,15 @@ export const updateLabel = param => http(param, `/label/update`, 'POST')
 
 //删除标签
 export const deleteLabel = param => http(param, `/label/delete`, 'GET')
+
+//新增笔记
+export const setNotes = param => http(param, `/notes/set`, 'POST')
+
+//获取全部笔记
+export const getNotes = param => http(param, `/notes/get`, 'GET')
+
+//根据id修改笔记是否为发布
+export const updateNotesid = param => http(param, `/update/notes/id`, 'GET')
+
+//根据id删除笔记
+export const deleteNotes = param => http(param, `/notes/delete`, 'GET')

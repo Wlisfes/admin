@@ -17,7 +17,14 @@
             <MenuItem name="2-1" to="/all/tulist">文章列表</MenuItem>
             <MenuItem name="2-2" to="/add/tubook">添加文章</MenuItem>
             <MenuItem name="2-3" to="/dll/turubb">草稿箱</MenuItem>
-            <!-- <MenuItem name="2-4">文章分类</MenuItem> -->
+        </Submenu>
+        <Submenu name="7">
+            <template slot="title">
+                <Icon type="ios-paper" />
+                笔记
+            </template>
+            <MenuItem name="7-1" to="/All/Notes">笔记列表</MenuItem>
+            <MenuItem name="7-2" to="/Add/Notes">添加笔记</MenuItem>
         </Submenu>
         <Submenu name="3">
             <template slot="title">
