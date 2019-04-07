@@ -2,7 +2,7 @@
  * @Author: 情雨随风 
  * @Date: 2019-04-05 19:22:14 
  * @Last Modified by: Parker
- * @Last Modified time: 2019-04-06 01:36:29
+ * @Last Modified time: 2019-04-06 12:35:56
  * @Types 笔记列表
  */
 
@@ -43,13 +43,13 @@ export default {
                     align: 'center',
                     render: (h, params) => {
                         const row = params.row;
-                        const color = 'success'
+                        const color = row.color
                         const text = row.types
 
                         return h('Tag', {
                             props: {
                                 type: 'dot',
-                                color: 'success'
+                                color: color
                             }
                         }, text);
                     }
