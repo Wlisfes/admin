@@ -53,4 +53,31 @@ npm run build   打包
 
 # 界面欣赏
 
-![登录界面](https://raw.githubusercontent.com/Wlisfes/admin/master/Screenshot/1.png)
+![](https://raw.githubusercontent.com/Wlisfes/admin/master/Screenshot/1.png)
+![](https://raw.githubusercontent.com/Wlisfes/admin/master/Screenshot/2.png)
+![](https://raw.githubusercontent.com/Wlisfes/admin/master/Screenshot/3.png)
+![](https://raw.githubusercontent.com/Wlisfes/admin/master/Screenshot/4.png)
+![](https://raw.githubusercontent.com/Wlisfes/admin/master/Screenshot/5.png)
+![](https://raw.githubusercontent.com/Wlisfes/admin/master/Screenshot/6.png)
+![](https://raw.githubusercontent.com/Wlisfes/admin/master/Screenshot/7.png)
+![](https://raw.githubusercontent.com/Wlisfes/admin/master/Screenshot/8.png)
+
+
+## 更新说明
+
+### V1.2（2019.04.06）
+- 新增项目模块
+- 新增标签模块
+
+### V1.1（2019.03.18）
+- 新增文章操作模块
+- 新增笔记模块
+
+### V1.0（2019.03.06）
+- 项目初始化提交
+
+
+## 其他说明
+- 个人练手项目 不喜勿喷
+- 如果您喜欢该作品，您可以点右上角 "Star" "Fork" 表示支持 谢谢！
+- 如有问题请直接在 Issues 中提，或者您发现问题并有非常好的解决方案，欢迎 PR
