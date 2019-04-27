@@ -36,3 +36,20 @@ npm run dev     运行
 
 npm run build   打包
 ```
+
+# 技术栈
+
+- Vue-Cli（Vue 脚手架工具）
+- Vue（核心框架）
+- Vue-Router（页面路由）
+- Vuex（状态管理）
+- stylus（CSS预处理器
+- sxios（网络请求）
+- ES 6 / 7（JavaScript 语言的下一代标准）
+- iview （Vue组件ui框架）
+- js-cookie（cookie管理库）
+- vue-meditor（富文本编辑器）
+- vue-highlight.js（富文本配套样式美化库）
+
+# 界面欣赏
+
